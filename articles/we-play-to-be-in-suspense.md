@@ -1,14 +1,12 @@
 ---
 title = "We Play to Be in Suspense"
 date = 2020-06-08
-draft = false
+draft = true
 ---
 
 > There is a distinct difference between "suspense" and "surprise,"
 > and yet many pictures continually confuse the two. I'll explain what
 > I mean.
-
-<!--more-->
 
 Too often we end up with surprise at the table when we were going for
 suspense, why not turn to the master of suspense to see what we can
