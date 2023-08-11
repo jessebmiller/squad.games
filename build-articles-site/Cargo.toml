@@ -1,0 +1,11 @@
+[package]
+name = "build-site-articles"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+color-eyre = "0.5"
+gray_matter = "0.2"
+markdown = "1.0.0-alpha.11"
+maud = "0.25.0"
+serde = "1.0.178"
