@@ -77,5 +77,29 @@ fn main() -> Result<()> {
         }
     }
 
+    let mut channel = rss::ChannelBuilder::default()
+        .title("Squad Games".to_string())
+        .link("https://squad.games".to_string())
+        .description("Squad Games is a tabletop role playing game community and production studio created and organized by Jesse B. Miller. We create in the open, sharing ideas, prototypes, and play testing uncomfortably early. We invite collaboration and ideas from everyone who's got them.".to_string())
+        .build();
+
+    let mut rss_items: Vec<rss::Item> = Vec::new();
+    for article in articles.iter().filter(|a| a.draft == Some(false)) {
+        let title = article.title.clone().ok_or("Untitled").unwrap();
+        let url = format!("https://squad.games/{}", article.url_path().unwrap());
+        let item = rss::ItemBuilder::default()
+            .title(Some(title))
+            .link(Some(url))
+            .description(Some(article.summary().into_string()))
+            .content(Some(article.view().into_string()))
+            .build();
+        rss_items.push(item);
+    }
+
+    channel.set_items(rss_items);
+    channel.write_to(
+        std::fs::File::create(build_folder.join("feed.xml"))?
+    )?;
+
     Ok(())
 }
