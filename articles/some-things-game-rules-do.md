@@ -1,7 +1,7 @@
 ---
 title = "Some things Game Rules Do"
 author = "Jesse B. Miller"
-draft = false
+draft = true
 ---
 
 Play is a way to get experience with someting while limiting it's
