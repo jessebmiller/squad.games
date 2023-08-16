@@ -4,6 +4,7 @@ use gray_matter::engine::TOML;
 use color_eyre::Result;
 use serde::Deserialize;
 use maud::{html, Markup, PreEscaped};
+use markdown::{to_html_with_options, CompileOptions, Options};
 
 #[derive(Debug, Deserialize)]
 pub struct Article {
@@ -71,7 +72,16 @@ impl Viewable for Article {
                 (self.view_title())
                 @if let Some(content) = &self.content {
                     div class="content" {
-                        (PreEscaped(markdown::to_html(content)))
+                        (PreEscaped(to_html_with_options(
+                            content,
+                            &Options{
+                                compile: CompileOptions {
+                                    allow_dangerous_html: true,
+                                    ..CompileOptions::default()
+                                },
+                                ..Options::default()
+                            }
+                        ).unwrap()))
                     }
                 }
             }
@@ -87,7 +97,6 @@ pub trait Articler {
 
 impl Articler for PathBuf {
     fn make_article(&self, strip_prefix: PathBuf) -> Result<Article> {
-        println!("making article {} stripping prefix {}", self.display(), strip_prefix.display());
         let file_contents = std::fs::read_to_string(self).expect("Unable to read file");
         let matter: Matter<TOML> = Matter::new();
         let parsed = matter.parse(&file_contents);
