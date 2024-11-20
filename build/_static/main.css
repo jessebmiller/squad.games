@@ -1,0 +1,127 @@
+/* 1. Use a more-intuitive box-sizing model */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+/* 2. Remove default margin */
+* {
+    margin: 0;
+}
+body {
+    /* 3. Add accessible line-height */
+    font-size: max(100%, 2vw);
+    line-height: 1.5;
+    /* 4. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    background: #e1d9d0;
+    color: black;
+}
+/* 5. Improve media defaults */
+img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+}
+/* 6. Inherit fonts for form controls */
+input, button, textarea, select {
+    font: inherit;
+}
+/* 7. Avoid text overflows */
+p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+}
+/* 8. Improve line wrapping */
+p {
+    text-wrap: pretty;
+}
+h1, h2, h3, h4, h5, h6 {
+    text-wrap: balance;
+}
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+    isolation: isolate;
+}
+
+/*
+Page Styles
+*/
+
+#site-title {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-weight: 900;
+    font-optical-sizing: auto;
+    font-style: normal;
+    letter-spacing: -4vw;
+    word-spacing: 3vw;
+    font-size: 23vw;
+    max-width: 95vw;
+    margin: auto;
+}
+
+a {
+    text-decoration: underline;
+    color: black;
+}
+
+header a, #article-index a {
+    text-decoration: none;
+}
+
+footer a {
+    margin-right: 10%;
+}
+
+footer {
+    padding-top: 3em;
+    border-top: 1px solid black;
+
+    padding-bottom: 5em;
+}
+
+#content, footer {
+    margin: auto;
+    width: min(59ch, 80vw);
+}
+
+h1 {
+    margin-top: 3em;
+    margin-bottom: 2em;
+}
+
+h2, h3 {
+    margin-top: 1.5em;
+    margin-bottom: 1em;
+}
+
+p, h4, h5, h6, ul, hr {
+    margin-bottom: 1em;
+}
+
+#content {
+    h1 {
+        font-size: 2.62em;
+        font-weight: 800;
+    }
+
+    h2 {
+        font-size: 1.62em;
+        font-weight: 400;
+    }
+
+    h3 {
+        font-weight: 400;
+        font-style: italic;
+    }
+
+    blockquote {
+        margin-left: 2em;
+        font-size: 0.9em;
+    }
+}

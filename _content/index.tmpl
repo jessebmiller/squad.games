@@ -1,0 +1,12 @@
+{{ template "top" }}
+<div id="content">
+  {{ .Content }}
+  <div id="article-index">
+  {{ with $articles := index .Site.Children "articles" }}
+    {{ range $key, $value := $articles.Pages }}
+    <h1><a href="articles/{{ $key }}.html">{{ index $value.Meta "title" }}</a></h1>
+    {{ end }}
+  {{ end }}
+  </div>
+</div>
+{{ template "bot" }}
